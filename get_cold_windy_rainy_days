@@ -1,0 +1,15 @@
+# Python code​​​​​​‌​‌​‌​‌‌​‌‌‌​‌​​​‌‌‌‌​​​‌ below
+# Use print("messages...") to debug your solution.
+import json
+show_expected_result = False
+show_hints = True
+
+def get_cold_windy_rainy_days():
+    # your code goes here
+    with open("deps/sample-weather-history.json", "r") as weatherfile:
+        weatherdata = json.load(weatherfile)
+    #print(weatherdata)
+    cold_windy_rainy_days = list(filter( lambda x:(x['snow'] > 0.7 or x['prcp'] > 0.7) and ((x['tmin']+x['tmax'])/2) < 45 and x['awnd'] > 10.0  , weatherdata) )
+    #if any( d['snow'] > 0.7 and (d['tmin']+d['tmax'])/2 < 45 and d['awnd'] > 10.0 ):
+    return cold_windy_rainy_days
+    
